@@ -66,7 +66,7 @@ build/opus/dist/lib/libopus.so: build/opus/configure
 		--disable-hardening \
 		--disable-stack-protector \
 		&& \
-	emmake make -j && \
+	emmake make -k && \
 	emmake make install
 
 build/libvpx/dist/lib/libvpx.so:
@@ -90,7 +90,7 @@ build/libvpx/dist/lib/libvpx.so:
 		--disable-vp8-decoder \
 		--disable-vp9 \
 		&& \
-	emmake make -j && \
+	emmake make -k && \
 	emmake make install
 
 build/lame/dist/lib/libmp3lame.so:
@@ -108,7 +108,7 @@ build/lame/dist/lib/libmp3lame.so:
 		--disable-decoder \
 		--disable-frontend \
 		&& \
-	emmake make -j && \
+	emmake make -k && \
 	emmake make install
 
 build/x264/dist/lib/libx264.so:
@@ -133,7 +133,7 @@ build/x264/dist/lib/libx264.so:
 		--disable-gpac \
 		--disable-lsmash \
 		&& \
-	emmake make -j && \
+	emmake make -k && \
 	emmake make install
 
 # TODO(Kagami): Emscripten documentation recommends to always use shared
@@ -198,7 +198,7 @@ build/ffmpeg-webm/ffmpeg.bc: $(WEBM_SHARED_DEPS)
 		--extra-cflags="-s USE_ZLIB=1 -I../libvpx/dist/include" \
 		--extra-ldflags="-L../libvpx/dist/lib" \
 		&& \
-	emmake make -j && \
+	emmake make -k && \
 	cp ffmpeg ffmpeg.bc
 
 build/ffmpeg-mp4/ffmpeg.bc: $(MP4_SHARED_DEPS)
@@ -213,7 +213,7 @@ build/ffmpeg-mp4/ffmpeg.bc: $(MP4_SHARED_DEPS)
 		--extra-cflags="-s USE_ZLIB=1 -I../lame/dist/include" \
 		--extra-ldflags="-L../lame/dist/lib" \
 		&& \
-	emmake make -j && \
+	emmake make -k && \
 	cp ffmpeg ffmpeg.bc
 
 EMCC_COMMON_ARGS = \
